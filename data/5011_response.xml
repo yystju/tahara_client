@@ -1,0 +1,14 @@
+<message>
+    <header messageClass="5011" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="equip1" zoneID="1000" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678" />
+    </header>
+    <body>
+        <result errorCode="0" errorText="" actionCode="0" />
+        <panel state="0" pcbID="0011" productName="BMW001" productSide="1" timestamp="2008- 07-17T15:26:59+05:30">
+            <subPanel pos="1" state="0"/>
+            <subPanel pos="2" state="0"/>
+            <subPanel pos="3" state="0"/>
+            <subPanel pos="4" state="0"/>
+        </panel>
+    </body>
+</message>

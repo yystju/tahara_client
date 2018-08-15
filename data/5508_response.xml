@@ -1,0 +1,8 @@
+<message>
+    <header messageClass="5508" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="equip1" zoneID="1000" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <result barcode="1.00.xxxx.02|SN" errorCode="xxx" errorText="****" actionCode="0"/>
+    </body>
+</message>

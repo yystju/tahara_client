@@ -1,0 +1,8 @@
+<message>
+    <header messageClass="10000" transactionID="1234567890" reply="1" >
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="LaserMarker" zoneID="1000" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="" />
+    </header>
+    <body>
+        <result errorCode="0" errorText="" actionCode="0"/>
+    </body>
+</message>

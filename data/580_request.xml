@@ -1,0 +1,31 @@
+<message>
+    <header messageClass="580" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="TEST-DEV01" zoneID="1001" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <modelInfo modelNo="6.00.01.TEST-01" />   <!-- 26位barcode的前15位 -->
+        <product name="6.00.01.TEST-01" side="1"/>
+        <BOM>
+            <parts>
+                <part name="00010010" ref="1"/>
+                <part name="00010011" ref="2"/>
+            </parts>
+            <comps>
+                <comp pos="1" ref="1" refDes="R100"/>
+                <comp pos="1" ref="1" refDes="R102"/>
+                <comp pos="1" ref="2" refDes="R103"/>
+            </comps>
+        </BOM>
+        <resource>
+            <jigs>
+                <jig name="00010010" ref="1"/>
+                <jig name="00010011" ref="2"/>
+            </jigs>
+            <comps>
+                <comp pos="1R100" ref="1" refDes="" type="0"/>
+                <comp pos="1R102" ref="1" refDes="" type="0"/>
+                <comp pos="1R103" ref="2" refDes="" type="0"/>
+            </comps>
+        </resource>
+    </body>
+</message>

@@ -1,0 +1,22 @@
+<message>
+    <header messageClass="5506" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="TEST-DEV11" zoneID="1001" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <panelcomp type="new"><!--sub和label是互斥的。-->
+            <main>
+                <!--state=1 表示要被删掉的老wipno。state=0 表示要被保留或新加的wipno.-->
+                <!--只允许有 1 条state=0的panel和0-1条state=1的panel。-->
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0001" productName="BMW001" productSide="2"/>
+                <panel state="1" pcbID="1.00.01.TEST-01-00A0GT0011" productName="BMW001" productSide="1"/>
+            </main>
+            <sub>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0002" productName="BMW001" productSide="2"/>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0003" productName="BMW001" productSide="2"/>
+            </sub>
+            <label><!--label内只能有一个state=0的panel和0-1条state=1的panel-->
+                <panel state="0" pcbID="SN1234" productName="BMW001" productSide="2"/>
+            </label>
+        </panelcomp>
+    </body>
+</message>

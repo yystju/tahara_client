@@ -1,0 +1,16 @@
+<message>
+    <header messageClass="501" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="equip1" zoneID="1000" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <result errorCode="0" errorText="" actionCode="0"/>
+        <pcb barcode="0011" modelCode="ABC" serialNo="0011" pcbSide="0" scannerMountSide ="T"  />
+        <!--<product name="BMW001" side="0"/>-->
+        <!--<workItems>-->
+            <!--<workItem pos="1" place="1"/>-->
+            <!--<workItem pos="2" place="1"/>-->
+            <!--<workItem pos="3" place="0"/>-->
+            <!--<workItem pos="4" place="1"/>-->
+        <!--</workItems>-->
+    </body>
+</message>

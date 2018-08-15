@@ -1,0 +1,14 @@
+<message>
+    <header messageClass="550" transactionID="S01-L05-ICT-M1_20180515040009" reply="1">
+        <location routeID="1000" routeName="SMT-1" equipmentID="1000" equipmentName="TEST-DEV01" zoneID="1000"
+                  zonePos="1" zoneName="TEST-DEV01" laneNo="1" controllerGuid=""/>
+    </header>
+    <body>
+        <panel pcbID="6.00.01.TEST-01-10A0GT0001" state="0" timestamp="2018-05-15 04:00:09" productSide="1" repairType="1" productName="test">
+            <subPanel state="0" pos="1"/>
+            <subPanel state="0" pos="2"/>
+            <subPanel state="0" pos="3"/>
+            <subPanel state="0" pos="4"/>
+        </panel>
+    </body>
+</message>

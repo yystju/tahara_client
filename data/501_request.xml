@@ -1,0 +1,8 @@
+<message>
+    <header messageClass="501" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="TEST-DEV01" zoneID="1000" zonePos="1" zoneName="TEST-DEV01" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <pcb barcode="6.00.01.TEST-01-10A0GT0001" modelCode="ABC" serialNo="0011" pcbSide="1" scannerMountSide="T"/>
+    </body>
+</message>

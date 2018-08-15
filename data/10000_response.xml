@@ -1,0 +1,13 @@
+<message>
+    <header messageClass="10001" transactionID="1234567890" reply="1" >
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="S01-L01-ICT-M1" zoneID="1000" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="" />
+    </header>
+    <body>
+        <MPPCBTagReq barcode="6.00.01.0022-01-10A0G9T0001" manufacturelotno="123223_1268" timestamp="2008-07-17T15:26:59+05:30" subpanelcount="4" position="0" result="PASS" camceraenable="0">
+            <SPPCBTagReq barcode="1.00.01.0022-01-00A0G9T0001" position="1" result="PASS"  camceraenable="0"/>
+            <SPPCBTagReq barcode="1.00.01.0022-01-00A0G9T0002" position="2" result="PASS"  camceraenable="0"/>
+            <SPPCBTagReq barcode="1.00.01.0022-01-00A0G9T0003" position="3" result="PASS"  camceraenable="0"/>
+            <SPPCBTagReq barcode="1.00.01.0022-01-00A0G9T000X" position="5" result="PASS"  camceraenable="0"/>
+        </MPPCBTagReq>
+    </body>
+</message>

@@ -1,0 +1,53 @@
+<message> 
+  <header messageClass="10006" transactionID="10006response" reply="1"> 
+    <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="equip1" zoneID="1001" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/> 
+  </header>  
+  <body> 
+    <result errorCode="0" errorText=""/>  
+    <modelInfo modelNo="15位Prd+3bin" side="1"/>  
+    <BOM> 
+      <parts> 
+        <part name="00010010" ref="1"/>  
+        <part name="00010015" ref="2"/> 
+      </parts>
+      <replacements>
+       <replaceGroup grpref="A">
+        <part name="1.00.9998.01-02" />
+        <part name="1.00.2345.01-01" />
+       </replaceGroup>
+       <replaceGroup grpref="B">
+        <part name="1.00.0101.01-02" />
+        <part name="1.00.0202.01-01"  />
+       </replaceGroup>
+      </replacements>  
+      <comps> 
+        <comp pos="1" ref="1" grpref="A" refDes="R100"/>  
+        <comp pos="1" ref="1" grpref="" refDes="R102"/>  
+        <comp pos="1" ref="2" grpref="B" refDes="C10"/>  
+        <!-- skip-->  
+        <comp pos="4" ref="1" grpref="A" refDes="R100"/>  
+        <comp pos="4" ref="1" grpref="" refDes="R102"/>  
+        <comp pos="4" ref="2" grpref="B" refDes="C10"/> 
+      </comps>
+
+    </BOM>  
+    <resource> 
+      <jigs> 
+        <jig name="BMW001-T" ref="0"/>  
+        <jig name="Feeder-6" ref="1"/>  
+        <jig name="Feeder-8" ref="2"/>  
+        <jig name="Feeder-12" ref="3"/> 
+      </jigs>  
+      <comps> 
+       <!-- refDes:1工装 2 程式 3设备-->
+        <comp pos="0" ref="0" type="1"/>  
+        <comp pos="0" ref="1" type="1"/>  
+        <comp pos="0" ref="2" type="1"/>  
+        <comp pos="0" ref="3" type="1"/>  
+        <comp pos="0" ref="1" type="1"/>  
+        <comp pos="0" ref="1" type="1"/>  
+        <comp pos="0" ref="2" type="1"/> 
+      </comps> 
+    </resource> 
+  </body> 
+</message>

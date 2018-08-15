@@ -1,0 +1,25 @@
+<message>
+    <header messageClass="10019" transactionID="1234567890" reply="1" >
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="TEST-DEV01" zoneID="1000" zonePos="1" zoneName="TEST-DEV01" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <result errorCode="0" errorText="" actionCode="0"/>
+        <manufacture
+                lotno="123223_1260"
+                type="0"
+                isolate="PI20180706006"
+                devision="103"
+                plan="WORK82050"
+                bom=""
+                productionline="LINE2"
+                technology="1.00.01.0585-05-001"
+                quantity="900"
+                actualqty="0"
+                state="0"
+                starttime="2018-07-08T00:00:00.000+8:00"
+                endtime="2018-07-10T00:00:00.000+8:00"
+                actualstarttime=""
+                actualendtime=""
+        />
+    </body>
+</message>

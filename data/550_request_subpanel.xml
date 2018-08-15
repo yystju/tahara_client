@@ -1,0 +1,8 @@
+<message>
+    <header messageClass="550" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="E1" zoneID="1001" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <panel state="0" pcbID="1.00.01.0022-01-00A0G9T0001" productName="BMW001" productSide="1" timestamp="2008-07-17T15:26:59+05:30"/>
+    </body>
+</message>

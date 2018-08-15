@@ -1,0 +1,21 @@
+<message>
+    <header messageClass="6004" transactionID="1234567890" reply="1">
+        <location routeID="1001" routeName="LINE1" equipmentID="1000" equipmentName="TEST-DEV11" zoneID="1001" zonePos="1" zoneName="SMT1" laneNo="0" controllerGuid="abcd12345678"/>
+    </header>
+    <body>
+        <panelcomp>
+            <state></state>
+            <main>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0001" productName="BMW001" productSide="2" timestamp="2008- 07-17T15:26:59+05:30"/>
+            </main>
+            <sub>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0002" productName="BMW001" productSide="2" timestamp="2008- 07-17T15:26:59+05:30"/>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0003" productName="BMW001" productSide="2" timestamp="2008- 07-17T15:26:59+05:30"/>
+                <panel state="0" pcbID="1.00.01.TEST-01-00A0GT0004" productName="BMW001" productSide="2" timestamp="2008- 07-17T15:26:59+05:30"/>
+            </sub>
+            <label>
+                <panel state="0" pcbID="SN1234" productName="BMW001" productSide="2" timestamp="2008- 07-17T15:26:59+05:30"/>
+            </label>
+        </panelcomp>
+    </body>
+</message>
