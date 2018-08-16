@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"bytes"
-	"encoding/xml"
 	"fmt"
 	"log"
 	"net"
@@ -13,7 +12,7 @@ import (
 type Command interface {
 	Prepare(parameter string)
 	Payload() string
-	Receive(msg *Message) (string, error)
+	Receive(msg []byte) (string, error)
 }
 
 func doReceiveAndClose(conn *net.TCPConn, c Command) {
@@ -30,15 +29,7 @@ func doReceiveAndClose(conn *net.TCPConn, c Command) {
 		if len(b) > 0 {
 			i := bytes.IndexByte(b, '\x01')
 
-			msg := new(Message)
-
-			err := xml.Unmarshal(b[i+1:], msg)
-
-			if err != nil {
-				log.Panic(err)
-			}
-
-			ret, err := c.Receive(msg)
+			ret, err := c.Receive(b[i+1:])
 
 			if err != nil {
 				log.Panic(err)

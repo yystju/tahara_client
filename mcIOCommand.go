@@ -1,8 +1,6 @@
 package main
 
 import (
-	"encoding/xml"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -25,16 +23,6 @@ func (c *mcIOCommand) Payload() string {
 	return string(b)
 }
 
-func (c *mcIOCommand) Receive(msg *Message) (string, error) {
-	if "0" == msg.Body.Result.ErrorCode {
-		m, err := xml.Marshal(msg)
-
-		if err != nil {
-			log.Panic(err)
-		}
-
-		return string(m), nil
-	}
-
-	return "", fmt.Errorf("ERROR : %s", msg.Body.Result.ErrorText)
+func (c *mcIOCommand) Receive(b []byte) (string, error) {
+	return string(b), nil
 }

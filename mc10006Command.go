@@ -9,7 +9,7 @@ import (
 )
 
 type mc10006Command struct {
-	Command
+	mcBaseCommand
 	Modelno string
 	Side    string
 }
@@ -51,7 +51,15 @@ func (c *mc10006Command) Payload() string {
 	return string(m)
 }
 
-func (c *mc10006Command) Receive(msg *Message) (string, error) {
+func (c *mc10006Command) Receive(b []byte) (string, error) {
+	msg := new(Message)
+
+	err := xml.Unmarshal(b, msg)
+
+	if err != nil {
+		return "", err
+	}
+
 	if "0" == msg.Body.Result.ErrorCode {
 		msg580 := new(Message)
 
@@ -65,7 +73,7 @@ func (c *mc10006Command) Receive(msg *Message) (string, error) {
 		m, err := xml.Marshal(msg580)
 
 		if err != nil {
-			log.Panic(err)
+			return "", err
 		}
 
 		return string(m), nil
