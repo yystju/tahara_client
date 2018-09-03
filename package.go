@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"sync"
 )
 
 // Command is the interface to generate the payload.
@@ -15,7 +16,7 @@ type Command interface {
 	Receive(msg []byte) (string, error)
 }
 
-func doReceiveAndClose(conn *net.TCPConn, c Command) {
+func doReceiveAndClose(conn *net.TCPConn, c Command, latch chan int) {
 	scanner := bufio.NewScanner(conn)
 
 	buff := make([]byte, 8*1024*1024)
@@ -25,8 +26,16 @@ func doReceiveAndClose(conn *net.TCPConn, c Command) {
 	scanner.Split(packageSpliter)
 
 	for scanner.Scan() {
+		if scanner.Err() != nil {
+			log.Printf("error(%v) break...", scanner.Err())
+			break
+		}
+
 		b := scanner.Bytes()
+
 		if len(b) > 0 {
+			log.Println("-received-")
+
 			i := bytes.IndexByte(b, '\x01')
 
 			ret, err := c.Receive(b[i+1:])
@@ -37,19 +46,26 @@ func doReceiveAndClose(conn *net.TCPConn, c Command) {
 
 			fmt.Println(ret)
 
-			conn.Close()
-
-			done <- 1
+			latch <- 1
 		}
 	}
+
+	log.Println("RECEIVER DONE.")
 }
 
-func doPost(conn *net.TCPConn, c Command) {
+func doPost(conn *net.TCPConn, c Command, latch chan int) {
 	s := c.Payload()
-	conn.Write([]byte(fmt.Sprintf("\x02%d\x01%s\x03", len(s), s)))
+
+	for i := 0; i < count; i++ {
+		conn.Write([]byte(fmt.Sprintf("\x02%d\x01%s\x03", len(s), s)))
+
+		<-latch
+	}
+
+	log.Println("POST DONE.")
 }
 
-func doCommand(addr string, c Command) {
+func doCommand(addr string, c Command, w *sync.WaitGroup) {
 	raddr, err := net.ResolveTCPAddr("tcp", addr)
 
 	if err != nil {
@@ -64,8 +80,15 @@ func doCommand(addr string, c Command) {
 
 	log.Println("CONNECTION: ", conn.RemoteAddr(), conn.LocalAddr())
 
-	go doReceiveAndClose(conn, c)
-	doPost(conn, c)
+	latch := make(chan int)
+	go doReceiveAndClose(conn, c, latch)
+	doPost(conn, c, latch)
+
+	conn.Close()
+
+	w.Done()
+
+	log.Println("-COMMAND DONE.-")
 }
 
 func packageSpliter(data []byte, atEOF bool) (advance int, token []byte, err error) {

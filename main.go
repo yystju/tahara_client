@@ -6,12 +6,15 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"sync"
 )
 
 var (
-	addr      string
-	command   string
-	parameter string
+	addr        string
+	command     string
+	parameter   string
+	count       int
+	concurrency int
 
 	commands = make(map[string]Command)
 
@@ -30,6 +33,8 @@ func init() {
 	flag.StringVar(&addr, "s", ":58060", "The server address \"host:port\".")
 	flag.StringVar(&command, "c", "-", fmt.Sprintf("The command in %v. \"-\" indicates not a command mode.", keys))
 	flag.StringVar(&parameter, "p", "", "The parameters (space-separated) for the command.")
+	flag.IntVar(&count, "t", 1, "Number of times to loop.")
+	flag.IntVar(&concurrency, "n", 1, "Number of threads.")
 	flag.Parse()
 }
 
@@ -44,12 +49,24 @@ func main() {
 
 	log.SetOutput(f)
 
+	w := new(sync.WaitGroup)
+
+	w.Add(concurrency)
+
 	if command == "-" {
-		doCommand(addr, new(mcIOCommand))
+		cmd := new(mcIOCommand)
+		cmd.Prepare("")
+		for i := 0; i < concurrency; i++ {
+			go doCommand(addr, cmd, w)
+		}
 	} else { //Command mode
 		commands[command].Prepare(parameter)
-		doCommand(addr, commands[command])
+		for i := 0; i < concurrency; i++ {
+			doCommand(addr, commands[command], w)
+		}
 	}
 
-	<-done
+	w.Wait()
+
+	log.Println("MAIN DONE.")
 }
